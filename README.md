@@ -4,7 +4,7 @@
 
 Install dependencies with `npm install`.
 
-### M1 Mac / macOS Monterey
+### macOS Monterey
 
 ```
 scheduler % node -v

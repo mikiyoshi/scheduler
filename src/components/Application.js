@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 
 import DayList from './DayList';
 import 'components/Application.scss';
+import InterviewerList from './InterviewerList';
 
 export default function Application(props) {
   const days = [
@@ -48,7 +49,9 @@ export default function Application(props) {
           alt="Lighthouse Labs"
         />
       </section>
-      <section className="schedule"></section>
+      <section className="schedule">
+        <InterviewerList />
+      </section>
     </main>
   );
 }

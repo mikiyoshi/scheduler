@@ -22,6 +22,15 @@ export default function DayList(props) {
   // const [day, setDay] = useState('Monday');
   const { days, setDay, value } = props;
   return (
+    // <ul>
+    //   <DayListItem
+    //   key={props.id}
+    //   name={props.name}
+    //   spots={props.spots}
+    //   selected={props.name === props.value}
+    //   setDay={props.onChange}
+    //  />
+    // </ul>
     <ul>
       {days.map((singleDay) => {
         return (

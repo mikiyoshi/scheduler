@@ -93,12 +93,19 @@ storiesOf('InterviewerListItem', module)
       selected
     />
   ))
+  // .add('Clickable', () => (
+  //   <InterviewerListItem
+  //     id={interviewer.id}
+  //     name={interviewer.name}
+  //     avatar={interviewer.avatar}
+  //     setInterviewer={action('setInterviewer')}
+  //   />
+  // ));
   .add('Clickable', () => (
     <InterviewerListItem
-      id={interviewer.id}
       name={interviewer.name}
       avatar={interviewer.avatar}
-      setInterviewer={action('setInterviewer')}
+      setInterviewer={() => action('setInterviewer')(interviewer.id)}
     />
   ));
 
@@ -110,17 +117,31 @@ const interviewers = [
   { id: 5, name: 'Sven Jones', avatar: 'https://i.imgur.com/twYrpay.jpg' },
 ];
 
+// storiesOf('InterviewerList', module)
+//   .addParameters({
+//     backgrounds: [{ name: 'dark', value: '#222f3e', default: true }],
+//   })
+//   .add('Initial', () => <InterviewerList interviewers={interviewers} />)
+//   .add('Selected', () => (
+//     <InterviewerList interviewers={interviewers} interviewer={3} />
+//   ))
+//   .add('Clickable', () => (
+//     <InterviewerList
+//       interviewers={interviewers}
+//       setInterviewer={action('setInterviewer')}
+//     />
+//   ));
 storiesOf('InterviewerList', module)
   .addParameters({
     backgrounds: [{ name: 'dark', value: '#222f3e', default: true }],
   })
   .add('Initial', () => <InterviewerList interviewers={interviewers} />)
   .add('Selected', () => (
-    <InterviewerList interviewers={interviewers} interviewer={3} />
+    <InterviewerList interviewers={interviewers} value={3} />
   ))
   .add('Clickable', () => (
     <InterviewerList
       interviewers={interviewers}
-      setInterviewer={action('setInterviewer')}
+      onChange={action('setInterviewer')}
     />
   ));

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import InterviewerListItem from './InterviewerListItem';
 import 'components/InterviewerList.scss';
 
@@ -22,6 +22,27 @@ export default function InterviewerList(props) {
   // ];
 
   // const { interviewers, setInterviewer, value } = props;
+  // const { interviewers, value, onChange } = props;
+  // return (
+  //   <section className="interviewers">
+  //     <h4 className="interviewers__header text--light">Interviewer</h4>
+  //     <ul className="interviewers__list">
+  //       {/* {interviewers.map((oneInt) => {
+  //         return (
+  //           <InterviewerListItem
+  //             key={oneInt.id}
+  //             name={oneInt.name}
+  //             avatar={oneInt.avatar}
+  //             selected={oneInt.id === value}
+  //             setInterviewer={() => onChange(oneInt.id)}
+  //           />
+  //         );
+  //       })} */}
+  //     </ul>
+  //   </section>
+  // );
+
+  // const interviewers = props.interviewers.map((interviewer) => {
   const { interviewers, value, onChange } = props;
   return (
     <section className="interviewers">
@@ -29,6 +50,13 @@ export default function InterviewerList(props) {
       <ul className="interviewers__list">
         {interviewers.map((oneInt) => {
           return (
+            // <InterviewerListItem
+            //   key={interviewer.id}
+            //   name={interviewer.name}
+            //   avatar={interviewer.avatar}
+            //   selected={interviewer.id === props.interviewer}
+            //   setInterviewer={() => props.setInterviewer(interviewer.id)}
+            // />
             <InterviewerListItem
               key={oneInt.id}
               name={oneInt.name}
@@ -41,8 +69,9 @@ export default function InterviewerList(props) {
       </ul>
     </section>
   );
+  // });
 }
 
-InterviewerList.propTypes = {
-  interviewers: PropTypes.array.isRequired,
-};
+// InterviewerList.propTypes = {
+//   interviewers: PropTypes.array.isRequired,
+// }

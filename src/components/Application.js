@@ -4,6 +4,8 @@ import React, { useState } from 'react';
 import DayList from './DayList';
 import 'components/Application.scss';
 import Appointment from 'components/Appointment';
+// error conflict components/Appointment.js and components/Appointment/index.js
+// delete components/Appointment.js
 
 const appointments = [
   {

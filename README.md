@@ -15,6 +15,18 @@ scheduler % npm -v
 8.3.1
 ```
 
+## Running Webpack Development Server port 8000
+
+- scheduler localhost:8000
+  - package.json proxy localhost:8001
+- scheduler-api localhost:8001
+
+## scheduler and scheduler-api run
+
+```sh
+npm start
+```
+
 ### Step 1 clone from git https://github.com/lighthouse-labs/scheduler/
 
 ### Step 2 Delete package-lock.

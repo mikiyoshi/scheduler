@@ -20,7 +20,8 @@ export default function DayList(props) {
   //   },
   // ];
   // const [day, setDay] = useState('Monday');
-  const { days, setDay, value } = props;
+  // const { days, setDay, value } = props;
+
   // console.log('DayList days', days);
   // console.log('DayList setDay', setDay);
   // console.log('DayList value', value);
@@ -35,30 +36,46 @@ export default function DayList(props) {
   // console.log(id); // 42
   // console.log(isVerified); // true
 
-  return (
-    // <ul>
-    //   <DayListItem
-    //   key={props.id}
-    //   name={props.name}
-    //   spots={props.spots}
-    //   selected={props.name === props.value}
-    //   setDay={props.onChange}
-    //  />
-    // </ul>
-    <ul>
-      {days.map((singleDay) => {
-        return (
-          <DayListItem
-            key={singleDay.id}
-            name={singleDay.name}
-            spots={singleDay.spots}
-            selected={singleDay.name === value}
-            setDay={setDay}
-          />
-        );
-      })}
-    </ul>
-  );
+  // return (
+  //   // <ul>
+  //   //   <DayListItem
+  //   //   key={props.id}
+  //   //   name={props.name}
+  //   //   spots={props.spots}
+  //   //   selected={props.name === props.value}
+  //   //   setDay={props.onChange}
+  //   //  />
+  //   // </ul>
+  //   <ul>
+  //     {days.map((singleDay) => {
+  //       return (
+  //         <DayListItem
+  //           // key={singleDay.id}
+  //           // name={singleDay.name}
+  //           // spots={singleDay.spots}
+  //           // selected={singleDay.name === value}
+  //           // setDay={setDay}
+  //         />
+  //       );
+  //     })}
+  //   </ul>
+  // );
+
+  const { days, day, setDay } = props;
+  const listItems = days.map((items) => {
+    return (
+      // Array of DayListItem
+      <DayListItem
+        key={items.id}
+        name={items.name}
+        spots={items.spots}
+        selected={items.name === props.value}
+        setDay={props.onChange}
+      />
+    );
+  });
+  // Render the new day list item inside a ul tag
+  return <ul>{listItems}</ul>;
 }
 
 // export default function DayList(props){

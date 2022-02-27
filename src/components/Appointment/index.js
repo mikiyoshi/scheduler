@@ -5,6 +5,7 @@ import Empty from './Empty';
 import './styles.scss';
 
 export default function Appointment(props) {
+  // console.log('Appointment', props);
   return (
     <main className="appointment">
       <article className="appointment">

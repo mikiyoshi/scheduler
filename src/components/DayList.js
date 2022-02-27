@@ -21,6 +21,20 @@ export default function DayList(props) {
   // ];
   // const [day, setDay] = useState('Monday');
   const { days, setDay, value } = props;
+  // console.log('DayList days', days);
+  // console.log('DayList setDay', setDay);
+  // console.log('DayList value', value);
+  // console.log('DayList', props);
+  // Object destructuring
+  // Basic assignment
+  // const user = {
+  //     id: 42,
+  //     isVerified: true
+  // };
+  // const {id, isVerified} = user;
+  // console.log(id); // 42
+  // console.log(isVerified); // true
+
   return (
     // <ul>
     //   <DayListItem

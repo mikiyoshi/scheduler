@@ -2,11 +2,11 @@
 
 import axios from 'axios';
 import 'components/Application.scss';
-import DayList from './DayList';
+import DayList from 'components/DayList';
 // import React, { useState } from 'react';
 import React, { useState, useEffect } from 'react';
 import Appointment from 'components/Appointment';
-import getAppointmentsForDay from './../helpers/selectors';
+import getAppointmentsForDay from 'helpers/selectors';
 import { getInterview, getInterviewersForDay } from 'helpers/selectors';
 // error conflict components/Appointment.js and components/Appointment/index.js
 // delete components/Appointment.js
@@ -194,7 +194,7 @@ export default function Application(props) {
           {/* <DayList days={days} day={day} setDay={setDay} /> */}
           {/* <DayList days={days} value={day} onChange={setDay} />
            */}
-          <DayList days={state.days} day={state.day} setDay={setDay} />
+          <DayList days={state.days} day={state.day} onChange={setDay} />
         </nav>
         <img
           className="sidebar__lhl sidebar--centered"

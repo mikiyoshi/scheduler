@@ -7,6 +7,7 @@ Install dependencies with `npm install`.
 ### macOS Monterey
 
 ```
+nvm install 12.22.7
 scheduler % node -v
 v12.22.7
 scheduler % nvm -v
@@ -65,4 +66,8 @@ npm test
 
 ```sh
 npm run storybook
+```
+
+```
+npm install axios
 ```

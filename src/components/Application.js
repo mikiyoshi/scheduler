@@ -1,12 +1,13 @@
 // import React from 'react';
 
+import axios from 'axios';
+import 'components/Application.scss';
+import DayList from './DayList';
 // import React, { useState } from 'react';
 import React, { useState, useEffect } from 'react';
-import DayList from './DayList';
-import 'components/Application.scss';
 import Appointment from 'components/Appointment';
-import axios from 'axios';
 import getAppointmentsForDay from './../helpers/selectors';
+import { getInterview, getInterviewersForDay } from 'helpers/selectors';
 // error conflict components/Appointment.js and components/Appointment/index.js
 // delete components/Appointment.js
 
@@ -87,23 +88,54 @@ export default function Application(props) {
     days: [],
     // you may put the line below, but will have to remove/comment hardcoded appointments variable
     appointments: {},
+    interviewers: {},
   });
 
+  // bookInterview function
+  function bookInterview(id, interview) {
+    const appointment = {
+      ...state.appointments[id],
+      interview: { ...interview },
+    };
+    const appointments = {
+      ...state.appointments,
+      [id]: appointment,
+    };
+    setState({
+      ...state,
+      appointments,
+    });
+    return axios
+      .put(`/api/appointments/${id}`, { interview })
+      .then((res) => {
+        console.log(state);
+      })
+      .catch((err) => {
+        console.log(err.message);
+      });
+  }
+
+  const setDay = (day) => setState({ ...state, day });
+
   const dailyAppointments = getAppointmentsForDay(state, state.day);
+  const interviewersItem = getInterviewersForDay(state, state.day);
 
   const scheduleList = dailyAppointments.map((appointment) => {
+    const interview = getInterview(state, appointment.interview);
     return (
       <Appointment
         key={appointment.id}
         id={appointment.id}
         time={appointment.time}
-        interview={appointment.interview}
+        interview={interview}
+        interviewers={interviewersItem}
+        bookInterview={bookInterview}
       />
     );
   });
   // setState({ ...state, day: 'Tuesday' }); // Spread Operator same as Object.assign, Aliasing Actions
   // setState(Object.assign({}, state, { day: "Tuesday" }); // Object.assign same as Spread Operator, Aliasing Actions
-  const setDay = (day) => setState({ ...state, day }); // Aliasing Actions same as Object.assign, Spread Operator
+  // const setDay = (day) => setState({ ...state, day }); // Aliasing Actions same as Object.assign, Spread Operator
 
   useEffect(() => {
     Promise.all([
@@ -111,15 +143,15 @@ export default function Application(props) {
       axios.get(`/api/appointments`),
       axios.get(`/api/interviewers`),
     ]).then((all) => {
-      const [first, second] = all;
+      // const [first, second] = all;
       setState((prev) => ({
         ...prev,
         days: all[0].data,
         appointments: all[1].data,
         interviewers: all[2].data,
       }));
-      console.log(all[0].data); // first
-      console.log(all[1].data); // second
+      // console.log(all[0].data); // first
+      // console.log(all[1].data); // second
     });
   }, []);
 

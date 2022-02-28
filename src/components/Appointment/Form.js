@@ -1,8 +1,9 @@
 // import React from 'react';
 import React, { useState } from 'react';
-import Button from './../Button';
 
 import InterviewerList from './../InterviewerList';
+
+import Button from './../Button';
 
 export default function Form(props) {
   const [student, setStudent] = useState(props.student || '');
@@ -31,10 +32,17 @@ export default function Form(props) {
       </section>
       <section className="appointment__card-right">
         <section className="appointment__actions">
-          <Button danger onClick={cancel}>
+          {/* <Button danger onClick={cancel}> */}
+          <Button danger onClick={props.onCancel}>
             Cancel
           </Button>
-          <Button confirm onClick={props.onSave}>
+          {/* <Button confirm onClick={props.onSave}> */}
+          <Button
+            confirm
+            onClick={() => {
+              props.onSave(student, interviewer);
+            }}
+          >
             Save
           </Button>
         </section>

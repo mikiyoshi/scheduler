@@ -10,11 +10,22 @@ export default function DayListItem(props) {
     'day-list__item--selected': props.selected,
     'day-list__item--full': props.spots === 0,
   });
-  function formatSpots(spots) {
-    return `${spots ? spots : 'no'} ${
-      spots !== 1 ? 'spots' : 'spot'
-    } remaining`;
-  }
+  // function formatSpots(spots) {
+  //   return `${spots ? spots : 'no'} ${
+  //     spots !== 1 ? 'spots' : 'spot'
+  //   } remaining`;
+  // }
+  const formatSpots = function (props) {
+    // 'no spots remaining'
+    // '1 spot remaining'
+    if (props === 0) {
+      return 'no spots remaining';
+    } else if (props === 1) {
+      return '1 spot remaining';
+    } else {
+      return `${props} spots remaining`;
+    }
+  };
   // if(spots){
   //   return spots: 'no remaining'
   // }
@@ -39,7 +50,7 @@ export default function DayListItem(props) {
       selected={props.selected}
     >
       <h2 className="text--regular">{props.name}</h2>
-      <h3 className="text--light">{formatSpots()}</h3>
+      <h3 className="text--light">{formatSpots(props.spots)}</h3>
     </li>
   );
 }

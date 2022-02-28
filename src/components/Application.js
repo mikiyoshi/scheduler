@@ -101,8 +101,9 @@ export default function Application(props) {
       />
     );
   });
-
-  const setDay = (day) => setState({ ...state, day });
+  // setState({ ...state, day: 'Tuesday' }); // Spread Operator same as Object.assign, Aliasing Actions
+  // setState(Object.assign({}, state, { day: "Tuesday" }); // Object.assign same as Spread Operator, Aliasing Actions
+  const setDay = (day) => setState({ ...state, day }); // Aliasing Actions same as Object.assign, Spread Operator
 
   useEffect(() => {
     Promise.all([

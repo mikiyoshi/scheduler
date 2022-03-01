@@ -8,6 +8,7 @@ import React, { useState, useEffect } from 'react';
 import Appointment from 'components/Appointment';
 import getAppointmentsForDay from 'helpers/selectors';
 import { getInterview, getInterviewersForDay } from 'helpers/selectors';
+import useApplicationData from 'hooks/useApplicationData';
 // error conflict components/Appointment.js and components/Appointment/index.js
 // delete components/Appointment.js
 
@@ -83,43 +84,49 @@ import { getInterview, getInterviewersForDay } from 'helpers/selectors';
 export default function Application(props) {
   // const [day, setDay] = useState('Monday');
   // const [day, setDay] = useState([]);
-  const [state, setState] = useState({
-    day: 'Monday',
-    days: [],
-    // you may put the line below, but will have to remove/comment hardcoded appointments variable
-    appointments: {},
-    interviewers: {},
-  });
+  // const [state, setState] = useState({
+  //   day: 'Monday',
+  //   days: [],
+  //   // you may put the line below, but will have to remove/comment hardcoded appointments variable
+  //   appointments: {},
+  //   interviewers: {},
+  // });
 
-  // bookInterview function
-  function bookInterview(id, interview) {
-    const appointment = {
-      ...state.appointments[id],
-      interview: { ...interview },
-    };
-    const appointments = {
-      ...state.appointments,
-      [id]: appointment,
-    };
-    // setState({
-    //   ...state,
-    //   appointments,
-    // })
-    return axios
-      .put(`/api/appointments/${id}`, { interview })
-      .then((res) => {
-        console.log(state);
-        setState({
-          ...state,
-          appointments,
-        });
-      })
-      .catch((err) => {
-        console.log(err.message);
-      });
-  }
+  // // bookInterview function
+  // function bookInterview(id, interview) {
+  //   const appointment = {
+  //     ...state.appointments[id],
+  //     interview: { ...interview },
+  //   };
+  //   const appointments = {
+  //     ...state.appointments,
+  //     [id]: appointment,
+  //   };
+  //   // setState({
+  //   //   ...state,
+  //   //   appointments,
+  //   // })
+  //   return axios
+  //     .put(`/api/appointments/${id}`, { interview })
+  //     .then((res) => {
+  //       // console.log(state);
+  //       setState({
+  //         ...state,
+  //         appointments,
+  //       });
+  //       console.log('AAA',appointments);
+  //     })
+  //     .catch((err) => {
+  //       console.log(err.message);
+  //     });
+  // }
 
-  const setDay = (day) => setState({ ...state, day });
+  // setState({ ...state, day: 'Tuesday' }); // Spread Operator same as Object.assign, Aliasing Actions
+  // setState(Object.assign({}, state, { day: "Tuesday" }); // Object.assign same as Spread Operator, Aliasing Actions
+  // Aliasing Actions same as Object.assign, Spread Operator
+  // const setDay = (day) => setState({ ...state, day });
+  const { state, setState, setDay, bookInterview, cancelInterview } =
+    useApplicationData();
 
   const dailyAppointments = getAppointmentsForDay(state, state.day);
   const interviewersItem = getInterviewersForDay(state, state.day);
@@ -137,9 +144,6 @@ export default function Application(props) {
       />
     );
   });
-  // setState({ ...state, day: 'Tuesday' }); // Spread Operator same as Object.assign, Aliasing Actions
-  // setState(Object.assign({}, state, { day: "Tuesday" }); // Object.assign same as Spread Operator, Aliasing Actions
-  // const setDay = (day) => setState({ ...state, day }); // Aliasing Actions same as Object.assign, Spread Operator
 
   useEffect(() => {
     Promise.all([
@@ -199,7 +203,7 @@ export default function Application(props) {
           {/* <DayList days={days} day={day} setDay={setDay} /> */}
           {/* <DayList days={days} value={day} onChange={setDay} />
            */}
-          <DayList days={state.days} day={state.day} onChange={setDay} />
+          <DayList days={state.days} day={state.day} setDay={setDay} />
         </nav>
         <img
           className="sidebar__lhl sidebar--centered"

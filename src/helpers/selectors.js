@@ -22,24 +22,35 @@ export default function getAppointmentsForDay(state, day) {
   return app;
 }
 
+// export function getInterview(state, interview) {
+//   let result = {};
+//   console.log('selector', interview);
+//   if (!interview) {
+//     return null;
+//   }
+//   for (let item in state.appointments) {
+//     if (state.appointments[item].interview) {
+//       let id = state.appointments[item].interview.interviewer;
+//       for (let key in state.interviewers) {
+//         if (state.interviewers[key].id === id) {
+//           result.student = state.appointments[item].interview.student;
+//           result.interviewer = state.interviewers[key];
+//         }
+//       }
+//     }
+//   }
+
+//   return result;
+// }
+
 export function getInterview(state, interview) {
   let result = {};
-  console.log('selector', interview);
+  console.log('Interview at selector', interview);
   if (!interview) {
     return null;
   }
-  for (let item in state.appointments) {
-    if (state.appointments[item].interview) {
-      let id = state.appointments[item].interview.interviewer;
-      for (let key in state.interviewers) {
-        if (state.interviewers[key].id === id) {
-          result.student = state.appointments[item].interview.student;
-          result.interviewer = state.interviewers[key];
-        }
-      }
-    }
-  }
-
+  result.student = interview.student;
+  result.interviewer = state.interviewers[interview.interviewer];
   return result;
 }
 

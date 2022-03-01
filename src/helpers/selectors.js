@@ -9,7 +9,7 @@ export default function getAppointmentsForDay(state, day) {
       for (let ele of elements.appointments) {
         // Iterate through state.appointments
         for (let key in sessions) {
-          const number = Number(key);
+          // const number = Number(key);
           // Push the value of state.appointment.id to the app array
           if (Number(key) === ele) {
             app.push(sessions[key]);
@@ -24,7 +24,7 @@ export default function getAppointmentsForDay(state, day) {
 
 export function getInterview(state, interview) {
   let result = {};
-  //console.log(interview)
+  console.log('selector', interview);
   if (!interview) {
     return null;
   }
@@ -56,6 +56,14 @@ export function getInterviewersForDay(state, dayName) {
       interviewer.push(state.interviewers[appointmentId]);
     }
   }
-  console.log(interviewer);
+  // console.log(interviewer);
   return interviewer;
+  // const dayfound = state.days.find((item) => dayName === item.name);
+  // if (state.days.length < 1 || dayfound === undefined) {
+  //   return [];
+  // }
+  // const dayInterviewers = dayfound.interviewers.map(
+  //   (interview) => state.interviewers[interview]
+  // );
+  // return dayInterviewers;
 }

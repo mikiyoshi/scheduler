@@ -13,7 +13,7 @@ export default function InterviewerListItem(props) {
   //     {selected && name}
   //   </li>
   // );
-  let name = props.selected ? props.name : ' ';
+  // let name = props.selected ? props.name : ' ';
   return (
     <li className={interviewerList} onClick={props.setInterviewer}>
       <img

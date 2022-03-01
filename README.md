@@ -71,3 +71,9 @@ npm run storybook
 ```
 npm install axios
 ```
+
+Cypress
+
+```
+npm install -g cypress
+```

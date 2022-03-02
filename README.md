@@ -77,3 +77,35 @@ Cypress
 ```
 npm install -g cypress
 ```
+
+```terminal 1 in the scheduler
+npm start
+```
+
+```terminal 2 in the scheduler-api
+npm run test:server
+```
+
+```terminal 3 in the scheduler
+npm run cypress
+```
+
+```
+
+```
+
+```
+
+```
+
+```
+
+```
+
+```
+
+```
+
+```
+
+```

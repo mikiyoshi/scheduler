@@ -1,80 +1,42 @@
-export default function getAppointmentsForDay(state, day) {
-  let app = [];
-  let sessions = state.appointments;
-  // Iterate through the elements in state.days
-  for (let elements of state.days) {
-    // Isolate the state.days.name that is equal to day
-    if (elements.name === day) {
-      // Loop through state.days.appointments
-      for (let ele of elements.appointments) {
-        // Iterate through state.appointments
-        for (let key in sessions) {
-          // const number = Number(key);
-          // Push the value of state.appointment.id to the app array
-          if (Number(key) === ele) {
-            app.push(sessions[key]);
-          }
-        }
-      }
-    }
+//getAppointmentsForDay
+export function getAppointmentsForDay(state, name) {
+  const filteredDays = state.days.filter((day) => day.name === name);
+  if (state.days.length === 0 || filteredDays.length === 0) {
+    return [];
   }
-  // Return the app array
-  return app;
+
+  const appointmentsFromDays = filteredDays[0].appointments;
+
+  let filteredAppointments = [];
+
+  for (let appointment of appointmentsFromDays) {
+    filteredAppointments.push(state.appointments[appointment]);
+  }
+  return filteredAppointments;
 }
 
-// export function getInterview(state, interview) {
-//   let result = {};
-//   console.log('selector', interview);
-//   if (!interview) {
-//     return null;
-//   }
-//   for (let item in state.appointments) {
-//     if (state.appointments[item].interview) {
-//       let id = state.appointments[item].interview.interviewer;
-//       for (let key in state.interviewers) {
-//         if (state.interviewers[key].id === id) {
-//           result.student = state.appointments[item].interview.student;
-//           result.interviewer = state.interviewers[key];
-//         }
-//       }
-//     }
-//   }
-
-//   return result;
-// }
-
+// getInterview
 export function getInterview(state, interview) {
-  let result = {};
-  console.log('Interview at selector', interview);
-  if (!interview) {
-    return null;
-  }
-  result.student = interview.student;
-  result.interviewer = state.interviewers[interview.interviewer];
-  return result;
+  if (!interview) return null;
+  const filteredInterview = {};
+  filteredInterview.student = interview.student;
+  filteredInterview.interviewer = state.interviewers[interview.interviewer];
+  return filteredInterview;
 }
 
-export function getInterviewersForDay(state, dayName) {
-  const filteredAppointments = state.days
-    .filter((day) => day.name === dayName)
-    .map((d) => d.appointments)
-    .flat();
-  // console.log(filteredAppointments);
-  const interviewer = [];
-  for (const appointmentId of filteredAppointments) {
-    // console.log(appointmentId)
-    if (state.interviewers[appointmentId]) {
-      interviewer.push(state.interviewers[appointmentId]);
-    }
+// getInterviewersForDay
+export function getInterviewersForDay(state, name) {
+  const filteredDays = state.days.filter((day) => day.name === name);
+  if (state.days.length === 0 || filteredDays.length === 0) {
+    return [];
   }
-  // console.log(interviewer);
-  return interviewer;
-  // const dayfound = state.days.find((item) => dayName === item.name);
-  // if (state.days.length < 1 || dayfound === undefined) {
-  //   return [];
-  // }
-  // const dayInterviewers = dayfound.interviewers.map(
-  //   (interview) => state.interviewers[interview]
-  // );
-  // return dayInterviewers;
+
+  const interviewersFromDays = filteredDays[0].interviewers;
+
+  let filteredInterviewers = [];
+
+  for (let interviewer of interviewersFromDays) {
+    filteredInterviewers.push(state.interviewers[interviewer]);
+  }
+  return filteredInterviewers;
 }

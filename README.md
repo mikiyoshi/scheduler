@@ -1,111 +1,78 @@
-# Interview Scheduler
+# Interview Scheduler Project
+
+With the Interview Scheduler application, a student can create, edit and delete interview appointments.
 
 ## Setup
 
-Install dependencies with `npm install`.
-
 ### macOS Monterey
 
-```
-nvm install 12.22.7
-scheduler % node -v
-v12.22.7
-scheduler % nvm -v
-0.37.2
-scheduler % npm -v
-8.3.1
-```
+1. [Create](https://github.com/lighthouse-labs/scheduler/) a new repository using this repository as a template.
+2. Clone your repository onto your local device.
+3. Install dependencies using the `npm install` command.
+4. Start the web server using the `npm start` command. The app will be served at <http://localhost:8000/>.
+5. Go to <http://localhost:8000/> in your browser.
 
-## Running Webpack Development Server port 8000
-
-- scheduler localhost:8000
-  - package.json proxy localhost:8001
-- scheduler-api localhost:8001
-
-## scheduler and scheduler-api run
+### Running Webpack Development Server
 
 ```sh
 npm start
 ```
 
-### Step 1 clone from git https://github.com/lighthouse-labs/scheduler/
-
-### Step 2 Delete package-lock.
-
-### Step 3
-
-```
-npm install
-```
-
-### Step 4
-
-```
-npm run storybook
-```
-
-### Step 5
-
-```
-npm test
-```
-
-## Running Webpack Development Server
-
-```sh
-npm start
-```
-
-## Running Jest Test Framework
+### Running Jest Test Framework
 
 ```sh
 npm test
 ```
 
-## Running Storybook Visual Testbed
+### Running Storybook Visual Testbed
 
 ```sh
 npm run storybook
 ```
 
-```
-npm install axios
-```
+## Server application
 
-Cypress
+The Scheduler client application created using Create React App. Express is the basis for the Scheduler API server application.
 
-```
-npm install -g cypress
-```
+Both servers run concurrently; requests are proxied from the Webpack development server to the API server.
 
-```terminal 1 in the scheduler
-npm start
-```
+1. [Create](https://github.com/lighthouse-labs/scheduler-api) a new repository using this repository as a template.
+2. Clone your repository onto your local device.
+3. Install dependencies using the `npm install` command.
+4. [Creating The DB](#creating-the-db)
+5. Start the web server using the `npm start` command. The app will be served at <http://localhost:8001/>.
+6. Go to <http://localhost:8001/> in your browser.
 
-```terminal 2 in the scheduler-api
-npm run test:server
-```
+### Creating The DB
 
-```terminal 3 in the scheduler
-npm run cypress
-```
+Use the `psql -U development` command to login to the PostgreSQL server with the username `development` and the password `development`. This command **MUST** be run in a vagrant terminal, we are using the PostgreSQL installation provided in the vagrant environment.
 
-```
+Create a database with the command `CREATE DATABASE scheduler_development;`.
+
+Copy the `.env.example` file to `.env.development` and fill in the necessary PostgreSQL configuration. The `node-postgres` library uses these environment variables by default.
 
 ```
-
+PGHOST=localhost
+PGUSER=development
+PGDATABASE=scheduler_development
+PGPASSWORD=development
+PGPORT=5432
 ```
 
-```
+## Dependencies
 
-```
+- React
+- Node 12.22.7
+- Webpack
+- Babel
+- Axios
+- WebSockets
+- Axios
+- Webpack Dev Server
+- Jest
+- Testing Library
+- Cypress
 
-```
+## Design
 
-```
-
-```
-
-```
-
-```
+- Storybook

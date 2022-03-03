@@ -2,6 +2,16 @@
 
 With the Interview Scheduler application, a student can create, edit and delete interview appointments.
 
+## Products
+
+### PC screen capture
+
+![PC](/images/pc.png)
+
+### Mobile screen capture
+
+![Mobile](/images/mobile.png)
+
 ## Setup
 
 ### macOS Monterey

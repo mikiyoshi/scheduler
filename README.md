@@ -6,11 +6,11 @@ With the Interview Scheduler application, a student can create, edit and delete 
 
 ### PC screen capture
 
-![PC](/images/pc.png)
+![PC](/docs/pc.png)
 
 ### Mobile screen capture
 
-![Mobile](/images/mobile.png)
+![Mobile](/docs/mobile.png)
 
 ## Setup
 

@@ -44,7 +44,7 @@
     "babel-loader": "^8.0.5",
     "node-sass": "npm:sass@^1.49.8",
     "prop-types": "^15.8.1",
-    "react-test-renderer": "^16.14.0"
+    "react-test-renderer": "^16.9.0"
   },
   "jest": {
     "watchPathIgnorePatterns": [

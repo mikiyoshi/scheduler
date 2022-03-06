@@ -15,6 +15,7 @@ export default function useApplicationData() {
     return setState({ ...state, day });
   };
 
+    // console.log('dddd',interviewers)
   useEffect(() => {
     const dayURL = '/api/days';
     const appointmentURL = '/api/appointments';
@@ -26,9 +27,9 @@ export default function useApplicationData() {
     ]).then((all) => {
       setState((prev) => ({
         ...prev,
-        days: all[0].data,
-        appointments: all[1].data,
-        interviewers: all[2].data,
+        days: all[0].data, // /api/days
+        appointments: all[1].data, // /api/appointments
+        interviewers: all[2].data, // /api/interviewers
       }));
     });
   }, []);
@@ -36,7 +37,7 @@ export default function useApplicationData() {
   //findDay
   function findDay(day) {
     const daysOfWeek = {
-      Monday: 0,
+      Monday: 0, // key from api/days
       Tuesday: 1,
       Wednesday: 2,
       Thursday: 3,

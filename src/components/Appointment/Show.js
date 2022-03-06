@@ -1,5 +1,6 @@
 import React from 'react';
 
+// Show Component
 export default function Show(props) {
   console.log('aaa', props);
   return (

@@ -1,11 +1,11 @@
-//getAppointmentsForDay
+//getAppointmentsForDay send to Array to Application.js
 export function getAppointmentsForDay(state, name) {
   const filteredDays = state.days.filter((day) => day.name === name);
   if (state.days.length === 0 || filteredDays.length === 0) {
     return [];
   }
 
-  const appointmentsFromDays = filteredDays[0].appointments;
+  const appointmentsFromDays = filteredDays[0].appointments; // selected days in the nav from http://localhost:8001/api/days
 
   let filteredAppointments = [];
 
@@ -15,16 +15,17 @@ export function getAppointmentsForDay(state, name) {
   return filteredAppointments;
 }
 
-// getInterview
+// getInterview send to Array to Application.js
 export function getInterview(state, interview) {
   if (!interview) return null;
   const filteredInterview = {};
   filteredInterview.student = interview.student;
   filteredInterview.interviewer = state.interviewers[interview.interviewer];
-  return filteredInterview;
+
+  return filteredInterview; // appointments list Obj atselected days in the nav from http://localhost:8001/api/appointments
 }
 
-// getInterviewersForDay
+// getInterviewersForDay send to Array to Application.js
 export function getInterviewersForDay(state, name) {
   const filteredDays = state.days.filter((day) => day.name === name);
   if (state.days.length === 0 || filteredDays.length === 0) {
@@ -38,5 +39,5 @@ export function getInterviewersForDay(state, name) {
   for (let interviewer of interviewersFromDays) {
     filteredInterviewers.push(state.interviewers[interviewer]);
   }
-  return filteredInterviewers;
+  return filteredInterviewers; // interviewers list Obj at selected days in the nav from http://localhost:8001/api/interviewers
 }

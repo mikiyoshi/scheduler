@@ -9,16 +9,17 @@ import {
   getInterviewersForDay,
 } from '../helpers/selectors';
 
-// Application function
+// Application Component
 export default function Application(props) {
   const { state, setDay, bookInterview, cancelInterview } =
     useApplicationData();
-
+  // selected days in the nav from http://localhost:8001/api/days
   let appointments = getAppointmentsForDay(state, state.day);
 
   const schedule = appointments.map((appointment) => {
-    const interview = getInterview(state, appointment.interview);
-    const interviewers = getInterviewersForDay(state, state.day);
+    const interview = getInterview(state, appointment.interview); // selected days appointment result each timeline
+    const interviewers = getInterviewersForDay(state, state.day); // selected days interviewer result each timeline
+
     return (
       <Appointment
         key={appointment.id}

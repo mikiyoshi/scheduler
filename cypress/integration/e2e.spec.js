@@ -2,11 +2,11 @@ const { CYCLIC_KEY } = require('@storybook/addon-actions');
 
 describe('Appointments', () => {
   beforeEach(() => {
-    cy.request('GET', '/api/debug/reset');
+    cy.request('GET', '/api/debug/reset'); // DB reset
 
-    cy.visit('/');
+    cy.visit('/'); // check start from Home
 
-    cy.contains('Monday');
+    cy.contains('Monday'); // Monday default
   });
 
   it('should book an interview', () => {

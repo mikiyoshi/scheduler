@@ -5,7 +5,7 @@ import { render, cleanup } from '@testing-library/react';
 import DayListItem from 'components/DayListItem';
 
 afterEach(cleanup);
-
+// A test that renders a React Component of Nav parts
 it('renders without crashing', () => {
   render(<DayListItem />);
 });

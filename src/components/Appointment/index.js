@@ -9,6 +9,7 @@ import Error from './Error';
 import './styles.scss';
 import useVisualMode from './../../hooks/useVisualMode';
 
+// Appointment Component
 export default function Appointment(props) {
   const EMPTY = 'EMPTY';
   const SHOW = 'SHOW';

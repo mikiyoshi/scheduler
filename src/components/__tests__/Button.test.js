@@ -5,9 +5,9 @@ import { render, cleanup, fireEvent } from '@testing-library/react';
 import Button from 'components/Button';
 
 afterEach(cleanup);
-
+// A test that renders a React Component of Button parts
 it('renders without crashing', () => {
-  render(<Button />);
+  render(<Button />); 
 });
 
 it('renders its `children` prop as text', () => {
